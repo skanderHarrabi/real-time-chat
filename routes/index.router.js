@@ -4,10 +4,6 @@ const mongoose = require("mongoose");
 const Room = mongoose.model("Room");
 //les routers de services
 
-router
-  .get("/", (req, res, next) => {
-    res.send("server is up and running");
-  });
 router.get("/allmsg", async (req, res, next) => {
   console.log(req.query.room);
   const room = await Room.findOne({ "name": req.query.room });

@@ -3,6 +3,7 @@ require("./models/db");
 require("./config/passportConfig");
 const mongoose = require("mongoose");
 const Room = mongoose.model("Room");
+const path = require('path')
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -88,6 +89,11 @@ io.on("connection", async (socket) => {
 });
 
 app.use("/", rtsIndex);
+
+app.use(express.static('client/build'));
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+})
 
 server.listen(process.env.PORT || 5000, () =>
   console.log(`Server started at port : ${process.env.PORT}`)
