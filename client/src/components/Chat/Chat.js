@@ -22,7 +22,7 @@ const Chat = ({ location }) => {
   const END = "localhost:5000";
   useEffect(() => {
     const { name, room } = queryString.parse(location.search);
-    axios.get(`https://skanderharrabi.github.io/real-time-chat/allmsg?room=${room}`)
+    axios.get(`http://localhost:5000/allmsg?room=${room}`)
       .then(res => {
         console.log(res.data.messages)
         const msgs = res.data.messages;

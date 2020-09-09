@@ -8,7 +8,7 @@ import './App.css';
 
 const App = () => {
   return (
-    <Router basename={process.env.PUBLIC_URL} >
+    <Router>
       <Route path='/' exact component={Join} />
       <Route path='/chat' component={Chat} />
     </Router>
